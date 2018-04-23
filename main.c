@@ -135,11 +135,11 @@ void buyTix()
     while(taken==true)
     {
       row = validateInt("\nEnter desired row: ", 0, 30) - 1;
-      col = validateInt("\nEnter desired column: ", 0, 30) - 1;
+      col = validateInt("Enter desired column: ", 0, 30) - 1;
       if(seats[row][col]=='-')
         taken = false;
       else
-        printf("Seat taken.\n");
+        printf("Seat taken. Choose another seat.\n");
     }
     seats[row][col] = '*';
     sold++;
@@ -152,9 +152,7 @@ void buyTix()
   scanf("%*c");
 }
 
-int validateInt(char msg[], int min, int max) //takes in console input and parses it to ensure it is an int not string, 
-                                              //also checks min/max parameters to ensure value is acceptable range
-                                              //keeps looping until an acceptable value is entered
+int validateInt(char msg[], int min, int max) //takes in console input and parses it to ensure it is an int not a string, also checks min/max parameters 
 {
   bool valid = false;
   int i = 0;
@@ -180,7 +178,7 @@ void seatsByRow()
       if(seats[r][c]=='-')
         total++;      
     }
-    printf("\nRow %d: %d seats left", r+1, total);
+    printf("\nRow %d: %d seats left for $%.2f", r+1, total, prices[r]);
     total = 0;
   }
 }
